@@ -497,9 +497,11 @@ export default class NimblePicker extends React.PureComponent {
         skinEmoji,
         notFound,
         notFoundEmoji,
+        searchComponent,
       } = this.props,
       { skin } = this.state,
       width = perLine * (emojiSize + 12) + 12 + 2 + measureScrollbar()
+    const SearchComponent = searchComponent || Search
 
     return (
       <section
@@ -520,7 +522,7 @@ export default class NimblePicker extends React.PureComponent {
           />
         </div>
 
-        <Search
+        <SearchComponent
           ref={this.setSearchRef}
           onSearch={this.handleSearch}
           data={this.data}
