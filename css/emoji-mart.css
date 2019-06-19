@@ -361,7 +361,7 @@
   position: relative;
   width: 36px;
   height: 38px;
-  padding: 0 2px 0 0;
+  padding: 2px 2px 0 0;
 }
 
 .emoji-mart-skin-swatch.custom.selected:after {
