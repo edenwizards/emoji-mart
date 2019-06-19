@@ -11,7 +11,13 @@ import {
   color,
 } from '@storybook/addon-knobs'
 
-import { Picker, Emoji, emojiIndex, NimbleEmojiIndex, getEmojiDataFromNative } from '../dist'
+import {
+  Picker,
+  Emoji,
+  emojiIndex,
+  NimbleEmojiIndex,
+  getEmojiDataFromNative,
+} from '../dist'
 import data from '../data/all.json'
 import '../css/emoji-mart.css'
 
@@ -42,13 +48,14 @@ storiesOf('Picker', module)
       set={select('Emoji pack', SETS, SETS[0])}
       emojiSize={number('Emoji size', 24)}
       perLine={number('Per line', 9)}
-      title={text('Idle text', 'Your Title Here')}
-      emoji={text('Idle emoji', 'department_store')}
+      title={text('Idle text', 'Pick an emoji')}
+      emoji={null}
       notFoundEmoji={text('Not found emoji', 'sleuth_or_spy')}
       defaultSkin={number('Default skin tone', 1)}
       color={color('Highlight color', '#ae65c5')}
       showPreview={boolean('Show preview', true)}
       showSkinTones={boolean('Show skin tones', true)}
+      skinEmoji="hand"
       custom={CUSTOM_EMOJIS}
     />
   ))
@@ -249,14 +256,10 @@ storiesOf('Get emoji data from Native', module)
     const emojiData = getEmojiDataFromNative(
       text('Unicode', '🏋🏿‍♂️'),
       select('Emoji pack', SETS, SETS[0]),
-      data
+      data,
     )
     if (!emojiData) {
-      return (
-        <div>
-          Couldn`t find any emoji data from native...
-        </div>
-      )
+      return <div>Couldn`t find any emoji data from native...</div>
     }
 
     return (
@@ -268,9 +271,7 @@ storiesOf('Get emoji data from Native', module)
           size={48}
         />
 
-        <pre>
-          emojiData: {JSON.stringify(emojiData, null, 2)}
-        </pre>
+        <pre>emojiData: {JSON.stringify(emojiData, null, 2)}</pre>
       </div>
     )
   })

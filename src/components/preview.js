@@ -61,13 +61,6 @@ export default class Preview extends React.PureComponent {
                 </span>
               ))}
             </div>
-            <div className="emoji-mart-preview-emoticons">
-              {listedEmoticons.map((emoticon) => (
-                <span key={emoticon} className="emoji-mart-preview-emoticon">
-                  {emoticon}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       )
@@ -80,7 +73,12 @@ export default class Preview extends React.PureComponent {
               NimbleEmoji({ emoji: idleEmoji, data: this.data, ...emojiProps })}
           </div>
 
-          <div className="emoji-mart-preview-data" aria-hidden="true">
+          <div
+            className={`emoji-mart-preview-data ${
+              idleEmoji ? '' : 'without-emoji-preview'
+            }`}
+            aria-hidden="true"
+          >
             <span className="emoji-mart-title-label">{title}</span>
           </div>
 
@@ -117,7 +115,7 @@ export default class Preview extends React.PureComponent {
 Preview.propTypes /* remove-proptypes */ = {
   showSkinTones: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  emoji: PropTypes.string.isRequired,
+  emoji: PropTypes.string,
   emojiProps: PropTypes.object.isRequired,
   skinsProps: PropTypes.object.isRequired,
 }

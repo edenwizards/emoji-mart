@@ -49,10 +49,10 @@ export default class SkinsEmoji extends Skins {
       <div
         className={`emoji-mart-skin-swatches custom${opened ? ' opened' : ''}`}
       >
+        {skinToneNodes}
         <div className={`emoji-mart-skin-text${opened ? ' opened' : ''}`}>
           {i18n.skintext}
         </div>
-        {skinToneNodes}
       </div>
     )
   }
